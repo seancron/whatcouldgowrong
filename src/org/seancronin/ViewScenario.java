@@ -27,7 +27,6 @@ public class ViewScenario extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	/* TODO: Fix scenario change on orientation change. */
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main2);
 
@@ -61,6 +60,36 @@ public class ViewScenario extends Activity {
 			return true;
 		    }
 		});
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+	super.onSaveInstanceState(outState);
+	
+	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
+	
+	outState.putIntArray("scenarioOrder", scenarioOrder);
+	outState.putInt("shufflePosition", shufflePosition);
+	outState.putCharSequence("scenarioText", scenarioText.getText());
+    }
+    
+    @Override
+    protected void onResume() {
+	super.onResume();
+	
+	//scenarioText = (TextView) findViewById(R.id.ScenarioBody);
+	//scenarioText.setText("Resumed.");
+    }
+    
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+	super.onRestoreInstanceState(savedInstanceState);
+	
+	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
+	
+	scenarioOrder = savedInstanceState.getIntArray("scenarioOrder");
+	shufflePosition = savedInstanceState.getInt("shufflePosition");
+	scenarioText.setText(savedInstanceState.getCharSequence("scenarioText"));
     }
 
     @Override
