@@ -37,17 +37,18 @@ public class ViewScenario extends Activity {
 	 * scenarioText = (TextView) findViewById(R.id.ScenarioBody);
 	 * 
 	 * 
+	 * 
 	 * scenarioText.setText(scenarios[scenarioNumber.nextInt(TOTAL_SCENARIOS-
 	 * 1)]);
 	 */
 
 	Resources res = getResources();
-	
+
 	scenarioOrder = new int[res.getStringArray(R.array.scenarios).length];
 	for (int i = 0; i < scenarioOrder.length; i++) {
 	    scenarioOrder[i] = i;
 	}
-	
+
 	shuffle(scenarioOrder);
 
 	randomScenario();
@@ -61,35 +62,36 @@ public class ViewScenario extends Activity {
 		    }
 		});
     }
-    
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 	super.onSaveInstanceState(outState);
-	
+
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	
+
 	outState.putIntArray("scenarioOrder", scenarioOrder);
 	outState.putInt("shufflePosition", shufflePosition);
 	outState.putCharSequence("scenarioText", scenarioText.getText());
     }
-    
+
     @Override
     protected void onResume() {
 	super.onResume();
-	
-	//scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	//scenarioText.setText("Resumed.");
+
+	// scenarioText = (TextView) findViewById(R.id.ScenarioBody);
+	// scenarioText.setText("Resumed.");
     }
-    
+
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
 	super.onRestoreInstanceState(savedInstanceState);
-	
+
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	
+
 	scenarioOrder = savedInstanceState.getIntArray("scenarioOrder");
 	shufflePosition = savedInstanceState.getInt("shufflePosition");
-	scenarioText.setText(savedInstanceState.getCharSequence("scenarioText"));
+	scenarioText
+		.setText(savedInstanceState.getCharSequence("scenarioText"));
     }
 
     @Override
@@ -124,7 +126,9 @@ public class ViewScenario extends Activity {
     /**
      * 
      * @param array
-     * @see <a href="http://en.wikipedia.org/w/index.php?title=Fisher-Yates_shuffle">Fisher-Yates Shuffle (Wikipedia)</a>
+     * @see <a
+     *      href="http://en.wikipedia.org/w/index.php?title=Fisher-Yates_shuffle">Fisher-Yates
+     *      Shuffle (Wikipedia)</a>
      */
     public static void shuffle(int[] array) {
 	for (int i = array.length; i > 1; i--) {
@@ -141,7 +145,7 @@ public class ViewScenario extends Activity {
 
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
 	scenarioText.setText(scenarios[scenarioOrder[shufflePosition]]);
-	
+
 	shufflePosition++;
 	if (shufflePosition >= scenarios.length) {
 	    shuffle(scenarioOrder);
