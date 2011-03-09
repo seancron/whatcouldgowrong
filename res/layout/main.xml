@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000"
+    >
+	<TextView
+	    android:id="@+id/ScenarioHeadline"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="What could go wrong?"
+	    android:textSize="50sp"
+	/>
+	<TextView
+	    android:text="It could cause the very fabric of reality to be destroyed!"
+	    android:id="@+id/ScenarioBody"
+	    android:layout_below="@id/ScenarioHeadline"
+	    android:layout_centerInParent="false"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center_vertical"
+	    android:gravity="center_vertical"
+	    android:textColor="#fff"
+	    android:textSize="25sp"
+	    android:paddingBottom="20dip"
+	    android:paddingTop="20dip"
+	/>
+	<TextView
+	    android:id="@+id/NextScenario"
+	    android:text="Click here for the next one."
+	    android:background="#669900"
+	    android:textColor="#fff"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50sp"
+	    android:gravity="center"
+	    android:layout_alignParentBottom="true"
+	/>
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">What Could Go Wrong?</string>
+    <string-array name="scenarios"> <!-- 15 items -->
+	    <item>"It could cause the very fabric of reality to be destroyed!"</item>
+	    <item>"You'll be mauled by a bear."</item>
+	    <item>"You'll be bitten by a shark."</item>
+	    <item>"The earth will be destroyed."</item>
+	    <item>"Facebook will become self-aware."</item>
+	    <item>"You'll be stabbed in the back."</item>
+	    <item>"You'll be bitten by a snake on a plane."</item>
+	    <item>"You'll be bitten by a zombie."</item>
+	    <item>"You'll spend the rest of your life shoveling snow."</item>
+	    <item>"You'll die of dysentary.</item>
+	    <item>"Chuck Norris will roundhouse kick you."</item>
+	    <item>"You'll be run over by an 18-wheeler."</item>
+	    <item>"You will be defenestrated."</item>
+	    <item>"You will spontaneously combust."</item>
+	    <item>"You will be abducted by aliens."</item>
+	    <item>"It will extinguish the sun."</item>
+    </string-array>
+</resources>
