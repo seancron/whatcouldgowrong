@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">What Could Go Wrong?</string>
-    <string-array name="scenarios"> <!-- 15 items -->
+    <string-array name="scenarios"> <!-- 25 items -->
 	    <item>"It could cause the very fabric of reality to be destroyed!"</item>
-	    <item>"You'll be mauled by a bear."</item>
-	    <item>"You'll be bitten by a shark."</item>
+	    <item>"You will be mauled by a bear."</item>
+	    <item>"You will be bitten by a shark."</item>
 	    <item>"The earth will be destroyed."</item>
 	    <item>"Facebook will become self-aware."</item>
-	    <item>"You'll be stabbed in the back."</item>
-	    <item>"You'll be bitten by a snake on a plane."</item>
-	    <item>"You'll be bitten by a zombie."</item>
-	    <item>"You'll spend the rest of your life shoveling snow."</item>
-	    <item>"You'll die of dysentary.</item>
+	    <item>"You will be stabbed in the back."</item>
+	    <item>"You will be bitten by a snake on a plane."</item>
+	    <item>"You will be bitten by a zombie."</item>
+	    <item>"You will spend the rest of your life shoveling snow."</item>
+	    <item>"You will die of dysentery.</item>
 	    <item>"Chuck Norris will roundhouse kick you."</item>
-	    <item>"You'll be run over by an 18-wheeler."</item>
-	    <item>"You will be defenestrated."</item>
+	    <item>"You will be run over by an 18-wheeler."</item>
+	    <item>"You will be thrown out a window."</item>
 	    <item>"You will spontaneously combust."</item>
 	    <item>"You will be abducted by aliens."</item>
 	    <item>"It will extinguish the sun."</item>
+	    <item>"Your head will fall off."</item>
+	    <item>"A rattlesnake will bite you."</item>
+	    <item>"You will be struck by lightning."</item>
+	    <item>"The building will collapse."</item>
+	    <item>"You will be assassinated by a ninja."</item>
+	    <item>"A pirate will steal all your booty."</item>
+	    <item>"It will cause the next ice age."</item>
+	    <item>"It will cause the nuclear holocaust"</item>
+	    <item>"It will be the start of World War III."</item>
     </string-array>
 </resources>
