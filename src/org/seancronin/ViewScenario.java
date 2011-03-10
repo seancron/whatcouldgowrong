@@ -112,7 +112,7 @@ public class ViewScenario extends Activity {
 	case MENU_SUGGESTION:
 	    /* TODO: Open form in browser */
 	    Intent i = new Intent(Intent.ACTION_VIEW);
-	    i.setData(Uri.parse("http://www.google.com"));
+	    i.setData(Uri.parse("https://spreadsheets.google.com/viewform?formkey=dER4QW13LTMxUFRsV1lQZjZTN1FqVEE6MQ"));
 	    startActivity(i);
 	    return true;
 	}
