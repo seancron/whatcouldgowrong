@@ -1,78 +1,86 @@
 package org.seancronin;
 
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Random;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.util.Log;
 
 public class ScenarioGenerator {
 
-    private final static Random randomNumber = new Random();
-    private int[] randomVerbOrder;
-    private int randomVerbPosition = 0;
-    private int[] randomVictimOrder;
-    private int randomVictimPosition = 0;
     private Resources res;
+    private final Hashtable<String, String[]> terms = new Hashtable<String, String[]>();
+    private Map<String, int[]> termOrder = new Hashtable<String, int[]>();
+    private Map<String, Integer> termPosition = new Hashtable<String, Integer>();
+    private final static Random randomNumber = new Random();
 
-    
     public ScenarioGenerator(Context context) {
 	res = context.getResources();
+	terms.put("victims", res.getStringArray(R.array.victims));
+	terms.put("verbs", res.getStringArray(R.array.verbs));
+	terms.put("villains", res.getStringArray(R.array.villains));
+	terms.put("causes", res.getStringArray(R.array.causes));
+	terms.put("effects", res.getStringArray(R.array.effects));
+	terms.put("locations", res.getStringArray(R.array.locations));
+	terms.put("standalones", res.getStringArray(R.array.standalones));
 	
-	/* Initialize random verb array */
-	randomVerbOrder = new int[res.getStringArray(R.array.verbs).length];
-	for (int i = 0; i < randomVerbOrder.length; i++) {
-	    randomVerbOrder[i] = i;
+	for (Enumeration<String> keys = terms.keys(); keys.hasMoreElements();) {
+	    String temp = keys.nextElement();
+	    termPosition.put(temp, 0);
+	    
+	    // Generate random order
+	    int[] tempOrder = new int[terms.get(temp).length];
+	    for (int i = 0; i < tempOrder.length; i++) {
+		tempOrder[i] = i;
+	    }
+	    shuffle(tempOrder);
+	    termOrder.put(temp, tempOrder);
 	}
-	shuffle(randomVerbOrder);
-	
-	randomVictimOrder = new int[res.getStringArray(R.array.victims).length];
-	for (int i = 0; i < randomVictimOrder.length; i++) {
-	    randomVictimOrder[i] = i;
-	}
-	shuffle(randomVictimOrder);
     }
 
     String generateScenario() {
-	int syntax = randomNumber.nextInt(1000);
-	
-	if (syntax == 999) {
-	    return "Nothing.";
-	}
-	else {
-	    return randomVictim() + " " + randomVerb();
-	}
+	int syntax = randomNumber.nextInt(2);
+
+	if (syntax == 0) {
+	    return capitalize(randomTerm("victims")) + " "
+		    + randomTerm("verbs") + " by " + randomTerm("villains");
+	}  else if (syntax == 1) {
+	    return capitalize(randomTerm("victims")) + " "
+		    + randomTerm("effects");
+	} /*else if (syntax == 2) {
+	    return randomTerm("standalones");
+	}*/
+
+	;
+	return "Nothing.";
     }
-    
-    String randomVerb() {
-	String[] verbs = res.getStringArray(R.array.verbs);
-	String temp = verbs[randomVerbOrder[randomVerbPosition]];
+
+    String randomTerm(String key) {
+	String[] values = terms.get(key);
+	int position = termPosition.get(key);
+	int[] order = termOrder.get(key);
+	String temp = values[order[position]];
 	
-	randomVerbPosition++;
-	if (randomVerbPosition >= verbs.length) {
-	    shuffle(randomVerbOrder);
-	    randomVerbPosition = 0;
+	position++;
+	termPosition.put(key, position);
+	
+	// If all the values have been used, re-shuffle the order.
+	if (position >= order.length) {
+	    shuffle(order);
+	    termOrder.put(key, order);
+	    termPosition.put(key, 0);
 	}
-	
-	return temp;
-    }
-    
-    String randomVictim() {
-	String[] subjects = res.getStringArray(R.array.victims);
-	Log.i("WCGW", "randomVictimPosition = " + randomVictimPosition);
-	String temp = subjects[randomVictimOrder[randomVictimPosition]];
-	
-	randomVictimPosition++;
-	if (randomVictimPosition >= subjects.length) {
-	    shuffle(randomVictimOrder);
-	    randomVictimPosition = 0;
-	}
-	
+
 	return temp;
     }
 
-    
-    public static void shuffle(int[] array) {
+    public String capitalize(String word) {
+	return word.substring(0, 1).toUpperCase() + word.substring(1);
+    }
+
+    public void shuffle(int[] array) {
 	for (int i = array.length; i > 1; i--) {
 	    int j = randomNumber.nextInt(i);
 	    int tmp = array[j];

@@ -34,15 +34,15 @@
     	<item>"Justin Bieber"</item>
     	<item>"Napoleon Bonaparte"</item>
     </string-array>
-    <string-array name="location">
+    <string-array name="locations">
     	<item>"out a window"</item>
     	<item>"in the back"</item>
     </string-array>
-    <string-array name="cause">
+    <string-array name="causes">
     	<item>"of dysentery"</item>
     	<item>"will spontaneously combust"</item>
     </string-array>
-    <string-array name="effect">
+    <string-array name="effects">
     	<item>"die of dysentery"</item>
     	<item>"will spontaneously combust"</item>
     </string-array>
@@ -54,7 +54,7 @@
     
     
     <!-- Deprecated -->
-    <string-array name="standalone"> <!-- 25 items -->
+    <string-array name="standalones"> <!-- 25 items -->
 	    <item>"It could cause the very fabric of reality to be destroyed!"</item>
 	    <item>"You will be mauled by a bear."</item>
 	    <item>"You will be bitten by a shark."</item>

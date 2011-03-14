@@ -99,7 +99,6 @@ public class ViewScenario extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
 	case MENU_SUGGESTION:
-	    /* TODO: Open form in browser */
 	    Intent i = new Intent(Intent.ACTION_VIEW);
 	    i.setData(Uri.parse("https://spreadsheets.google.com/viewform?formkey=dER4QW13LTMxUFRsV1lQZjZTN1FqVEE6MQ"));
 	    startActivity(i);
