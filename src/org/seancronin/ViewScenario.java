@@ -4,7 +4,6 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -23,6 +22,7 @@ public class ViewScenario extends Activity {
     final static Random scenarioNumber = new Random();
     private int[] scenarioOrder;
     private int shufflePosition = 0;
+    private ScenarioGenerator scenarioGenerator;
 
     /** Called when the activity is first created. */
     @Override
@@ -30,28 +30,18 @@ public class ViewScenario extends Activity {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main2);
 
+	//Resources res = getResources();
+	
+	scenarioGenerator = new ScenarioGenerator(getApplicationContext());
+
 	/*
-	 * Resources res = getResources(); String[] scenarios =
-	 * res.getStringArray(R.array.scenarios);
-	 * 
-	 * scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	 * 
-	 * 
-	 * 
-	 * scenarioText.setText(scenarios[scenarioNumber.nextInt(TOTAL_SCENARIOS-
-	 * 1)]);
-	 */
-
-	Resources res = getResources();
-
 	scenarioOrder = new int[res.getStringArray(R.array.scenarios).length];
 	for (int i = 0; i < scenarioOrder.length; i++) {
 	    scenarioOrder[i] = i;
 	}
 
 	shuffle(scenarioOrder);
-
-	randomScenario();
+	*/
 
 	gestureDetector = new GestureDetector(this,
 		new SimpleOnGestureListener() {
@@ -61,6 +51,8 @@ public class ViewScenario extends Activity {
 			return true;
 		    }
 		});
+	
+	randomScenario();
     }
 
     @Override
@@ -77,9 +69,6 @@ public class ViewScenario extends Activity {
     @Override
     protected void onResume() {
 	super.onResume();
-
-	// scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	// scenarioText.setText("Resumed.");
     }
 
     @Override
@@ -140,16 +129,17 @@ public class ViewScenario extends Activity {
     }
 
     public void randomScenario() {
-	Resources res = getResources();
-	String[] scenarios = res.getStringArray(R.array.scenarios);
+	//Resources res = getResources();
+	//String[] scenarios = res.getStringArray(R.array.scenarios);
+	String scenario = scenarioGenerator.generateScenario();
 
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	scenarioText.setText(scenarios[scenarioOrder[shufflePosition]]);
+	scenarioText.setText(scenario);
 
-	shufflePosition++;
+	/* shufflePosition++;
 	if (shufflePosition >= scenarios.length) {
 	    shuffle(scenarioOrder);
 	    shufflePosition = 0;
-	}
+	} */
     }
 }

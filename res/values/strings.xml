@@ -1,7 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">What Could Go Wrong?</string>
-    <string-array name="scenarios"> <!-- 25 items -->
+    <string-array name="victims">
+    	<item>"you"</item>
+    	<item>"one of your friends"</item>
+    	<item>"somebody you know"</item>
+    	<item>"your boss"</item>
+    	<item>"your mother"</item>
+    	<item>"your father"</item>
+    </string-array>
+    <string-array name="verbs">
+    	<item>"will be struck"</item>
+    	<item>"will be thrown"</item>
+    	<item>"will die"</item>
+    	<item>"will be stabbed"</item>
+    	<item>"will be bitten"</item>
+    	<item>"will be run over"</item>
+    	<item>"will be assassinated"</item>
+    	<item>"will be mauled"</item>
+    	<item>"will bitten"</item>
+    	<item>"will be deep-fried"</item>
+    	<item>"will be drowned"</item>
+    	<item>"will be cut in half"</item>
+    	<item>"will be electrocuted"</item>
+    </string-array>
+    <string-array name="villains">
+    	<item>"a zombie"</item>
+    	<item>"a ninja"</item>
+    	<item>"a samurai"</item>
+    	<item>"a bear"</item>
+    	<item>"a shark"</item>
+    	<item>"an 80s rockstar"</item>
+    	<item>"Justin Bieber"</item>
+    	<item>"Napoleon Bonaparte"</item>
+    </string-array>
+    <string-array name="location">
+    	<item>"out a window"</item>
+    	<item>"in the back"</item>
+    </string-array>
+    <string-array name="cause">
+    	<item>"of dysentery"</item>
+    	<item>"will spontaneously combust"</item>
+    </string-array>
+    <string-array name="effect">
+    	<item>"die of dysentery"</item>
+    	<item>"will spontaneously combust"</item>
+    </string-array>
+    <string-array name="evilObjects">
+    	<item>"a jet engine"</item>
+    	<item>"lightning"</item>
+    	<item>"an 18-wheeler"</item>
+    </string-array>
+    
+    
+    <!-- Deprecated -->
+    <string-array name="standalone"> <!-- 25 items -->
 	    <item>"It could cause the very fabric of reality to be destroyed!"</item>
 	    <item>"You will be mauled by a bear."</item>
 	    <item>"You will be bitten by a shark."</item>
