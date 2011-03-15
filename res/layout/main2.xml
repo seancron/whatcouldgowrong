@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/org.seancronin.wcgw"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -49,13 +50,32 @@
 	    android:textStyle="bold"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
+	    android:layout_weight=".2"
 	    android:gravity="center"
-	    android:layout_weight=".3"
 	    android:paddingLeft="10dip"
 	    android:paddingRight="10dip"
 	    android:shadowColor="#000"
 	    android:shadowRadius="1.5"
 	    android:shadowDx="1"
 	    android:shadowDy="1"
+	/>
+	<TextView
+		android:id="@+id/SuggestionsHint"
+		android:gravity="center"
+		android:text="Press Menu to suggest a scenario."
+		android:textColor="#ccc"
+		android:background="#003399"
+		android:textSize="14sp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	/>
+	<com.admob.android.ads.AdView
+		android:id="@+id/ad"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		app:backgroundColor="#000000"
+		app:primaryTextColor="#FFFFFF"
+		app:secondaryTextColor="#CCCCCC"
+		app:keywords="wrong disaster murphy's law possibilities uncertainty Android funny"
 	/>
 </LinearLayout>

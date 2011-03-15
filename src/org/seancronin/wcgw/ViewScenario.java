@@ -1,10 +1,7 @@
-package org.seancronin;
-
-import java.util.Random;
+package org.seancronin.wcgw;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -13,54 +10,44 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class ViewScenario extends Activity {
     private final int MENU_SUGGESTION = 1;
     private final int GROUP_DEFAULT = 0;
     private GestureDetector gestureDetector;
     TextView scenarioText;
-    final static Random scenarioNumber = new Random();
-    private int[] scenarioOrder;
-    private int shufflePosition = 0;
+    private ScenarioGenerator scenarioGenerator;
+    private int scenarioCounter;
+    GoogleAnalyticsTracker tracker;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main2);
+	
+	tracker = GoogleAnalyticsTracker.getInstance();
+	tracker.start("UA-16446358-3", 60, this);
+	tracker.trackPageView("/onCreate");
 
-	/*
-	 * Resources res = getResources(); String[] scenarios =
-	 * res.getStringArray(R.array.scenarios);
-	 * 
-	 * scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	 * 
-	 * 
-	 * 
-	 * scenarioText.setText(scenarios[scenarioNumber.nextInt(TOTAL_SCENARIOS-
-	 * 1)]);
-	 */
 
-	Resources res = getResources();
-
-	scenarioOrder = new int[res.getStringArray(R.array.scenarios).length];
-	for (int i = 0; i < scenarioOrder.length; i++) {
-	    scenarioOrder[i] = i;
-	}
-
-	shuffle(scenarioOrder);
-
-	randomScenario();
+	scenarioGenerator = new ScenarioGenerator(getApplicationContext());
 
 	gestureDetector = new GestureDetector(this,
 		new SimpleOnGestureListener() {
 		    @Override
 		    public boolean onSingleTapUp(MotionEvent e) {
 			randomScenario();
+			scenarioCounter++;
+			tracker.trackEvent("WCGW", "Next Scenario", scenarioText.getText().toString(), scenarioCounter);
 			return true;
 		    }
 		});
+
+	randomScenario();
+	scenarioCounter = 1;
     }
 
     @Override
@@ -68,18 +55,13 @@ public class ViewScenario extends Activity {
 	super.onSaveInstanceState(outState);
 
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-
-	outState.putIntArray("scenarioOrder", scenarioOrder);
-	outState.putInt("shufflePosition", shufflePosition);
 	outState.putCharSequence("scenarioText", scenarioText.getText());
+	outState.putInt("scenarioCounter", scenarioCounter);
     }
 
     @Override
     protected void onResume() {
 	super.onResume();
-
-	// scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	// scenarioText.setText("Resumed.");
     }
 
     @Override
@@ -87,11 +69,9 @@ public class ViewScenario extends Activity {
 	super.onRestoreInstanceState(savedInstanceState);
 
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-
-	scenarioOrder = savedInstanceState.getIntArray("scenarioOrder");
-	shufflePosition = savedInstanceState.getInt("shufflePosition");
 	scenarioText
 		.setText(savedInstanceState.getCharSequence("scenarioText"));
+	scenarioCounter = savedInstanceState.getInt("scenarioCounter");
     }
 
     @Override
@@ -110,46 +90,21 @@ public class ViewScenario extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
 	case MENU_SUGGESTION:
-	    /* TODO: Open form in browser */
+	    tracker.trackPageView("/suggestions");
 	    Intent i = new Intent(Intent.ACTION_VIEW);
-	    i.setData(Uri.parse("https://spreadsheets.google.com/viewform?formkey=dER4QW13LTMxUFRsV1lQZjZTN1FqVEE6MQ"));
+	    i
+		    .setData(Uri
+			    .parse("https://spreadsheets.google.com/viewform?formkey=dER4QW13LTMxUFRsV1lQZjZTN1FqVEE6MQ"));
 	    startActivity(i);
 	    return true;
 	}
 	return super.onOptionsItemSelected(item);
     }
 
-    public void createAlert() {
-	Toast.makeText(this, "Next scenario", Toast.LENGTH_SHORT).show();
-    }
-
-    /**
-     * 
-     * @param array
-     * @see <a
-     *      href="http://en.wikipedia.org/w/index.php?title=Fisher-Yates_shuffle">Fisher-Yates
-     *      Shuffle (Wikipedia)</a>
-     */
-    public static void shuffle(int[] array) {
-	for (int i = array.length; i > 1; i--) {
-	    int j = scenarioNumber.nextInt(i);
-	    int tmp = array[j];
-	    array[j] = array[i - 1];
-	    array[i - 1] = tmp;
-	}
-    }
-
     public void randomScenario() {
-	Resources res = getResources();
-	String[] scenarios = res.getStringArray(R.array.scenarios);
+	String scenario = scenarioGenerator.generateScenario();
 
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
-	scenarioText.setText(scenarios[scenarioOrder[shufflePosition]]);
-
-	shufflePosition++;
-	if (shufflePosition >= scenarios.length) {
-	    shuffle(scenarioOrder);
-	    shufflePosition = 0;
-	}
+	scenarioText.setText(scenario);
     }
 }
