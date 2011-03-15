@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.widget.TextView;
 
-import com.admob.android.ads.AdManager;
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class ViewScenario extends Activity {
     private final int MENU_SUGGESTION = 1;
@@ -19,12 +19,19 @@ public class ViewScenario extends Activity {
     private GestureDetector gestureDetector;
     TextView scenarioText;
     private ScenarioGenerator scenarioGenerator;
+    private int scenarioCounter;
+    GoogleAnalyticsTracker tracker;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.main2);
+	
+	tracker = GoogleAnalyticsTracker.getInstance();
+	tracker.start("UA-16446358-3", 60, this);
+	tracker.trackPageView("/onCreate");
+
 
 	scenarioGenerator = new ScenarioGenerator(getApplicationContext());
 
@@ -33,11 +40,14 @@ public class ViewScenario extends Activity {
 		    @Override
 		    public boolean onSingleTapUp(MotionEvent e) {
 			randomScenario();
+			scenarioCounter++;
+			tracker.trackEvent("WCGW", "Next Scenario", scenarioText.getText().toString(), scenarioCounter);
 			return true;
 		    }
 		});
 
 	randomScenario();
+	scenarioCounter = 1;
     }
 
     @Override
@@ -46,6 +56,7 @@ public class ViewScenario extends Activity {
 
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
 	outState.putCharSequence("scenarioText", scenarioText.getText());
+	outState.putInt("scenarioCounter", scenarioCounter);
     }
 
     @Override
@@ -60,6 +71,7 @@ public class ViewScenario extends Activity {
 	scenarioText = (TextView) findViewById(R.id.ScenarioBody);
 	scenarioText
 		.setText(savedInstanceState.getCharSequence("scenarioText"));
+	scenarioCounter = savedInstanceState.getInt("scenarioCounter");
     }
 
     @Override
@@ -78,6 +90,7 @@ public class ViewScenario extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
 	switch (item.getItemId()) {
 	case MENU_SUGGESTION:
+	    tracker.trackPageView("/suggestions");
 	    Intent i = new Intent(Intent.ACTION_VIEW);
 	    i
 		    .setData(Uri

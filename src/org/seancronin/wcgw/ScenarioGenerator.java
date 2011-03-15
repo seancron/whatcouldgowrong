@@ -21,10 +21,10 @@ public class ScenarioGenerator {
 	terms.put("victims", res.getStringArray(R.array.victims));
 	terms.put("verbs", res.getStringArray(R.array.verbs));
 	terms.put("villains", res.getStringArray(R.array.villains));
-	terms.put("causes", res.getStringArray(R.array.causes));
+	/*terms.put("causes", res.getStringArray(R.array.causes));
 	terms.put("effects", res.getStringArray(R.array.effects));
 	terms.put("locations", res.getStringArray(R.array.locations));
-	terms.put("standalones", res.getStringArray(R.array.standalones));
+	terms.put("standalones", res.getStringArray(R.array.standalones));*/
 	terms.put("certainties", res.getStringArray(R.array.certainties));
 
 	for (Enumeration<String> keys = terms.keys(); keys.hasMoreElements();) {
@@ -58,7 +58,6 @@ public class ScenarioGenerator {
 	   * if(syntax == 2) { return randomTerm("standalones"); }
 	   */
 
-	;
 	return "Nothing.";
     }
 
