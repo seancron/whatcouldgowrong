@@ -1,4 +1,4 @@
-package org.seancronin;
+package org.seancronin.wcgw;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.widget.TextView;
+
+import com.admob.android.ads.AdManager;
 
 public class ViewScenario extends Activity {
     private final int MENU_SUGGESTION = 1;
@@ -77,7 +79,9 @@ public class ViewScenario extends Activity {
 	switch (item.getItemId()) {
 	case MENU_SUGGESTION:
 	    Intent i = new Intent(Intent.ACTION_VIEW);
-	    i.setData(Uri.parse("https://spreadsheets.google.com/viewform?formkey=dER4QW13LTMxUFRsV1lQZjZTN1FqVEE6MQ"));
+	    i
+		    .setData(Uri
+			    .parse("https://spreadsheets.google.com/viewform?formkey=dER4QW13LTMxUFRsV1lQZjZTN1FqVEE6MQ"));
 	    startActivity(i);
 	    return true;
 	}

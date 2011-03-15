@@ -1,4 +1,4 @@
-package org.seancronin;
+package org.seancronin.wcgw;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -49,11 +49,10 @@ public class ScenarioGenerator {
 		    capitalize(randomTerm("victims")),
 		    randomTerm("certainties"), randomTerm("verbs"),
 		    randomTerm("villains"));
-	} /*else if (syntax == 1) {
-	    return String.format(format, args)
-	}
-	
-	
+	} /*
+	   * else if (syntax == 1) { return String.format(format, args) }
+	   * 
+	   * 
 	   * else if (syntax == 1) { return capitalize(randomTerm("victims")) +
 	   * " " + randomTerm("effects") + " " + randomTerm("causes"); } else
 	   * if(syntax == 2) { return randomTerm("standalones"); }
