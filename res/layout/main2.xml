@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/org.seancronin.wcgw"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -67,6 +68,14 @@
 		android:textSize="14sp"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:paddingBottom="5px"
+	/>
+	<com.admob.android.ads.AdView
+		android:id="@+id/ad"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		app:backgroundColor="#000000"
+		app:primaryTextColor="#FFFFFF"
+		app:secondaryTextColor="#CCCCCC"
+		app:keywords="wrong disaster murphy's law possibilities uncertainty Android funny"
 	/>
 </LinearLayout>
