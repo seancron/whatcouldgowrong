@@ -1,84 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">What Could Go Wrong?</string>
-    <string-array name="victims">
-    	<item>"you"</item>
-    	<item>"one of your friends"</item>
-    	<item>"somebody you know"</item>
-    	<item>"your boss"</item>
-    	<item>"your mother"</item>
-    	<item>"your father"</item>
-    </string-array>
-    <string-array name="verbs">
-    	<item>"will be struck"</item>
-    	<item>"will be thrown"</item>
-    	<item>"will die"</item>
-    	<item>"will be stabbed"</item>
-    	<item>"will be bitten"</item>
-    	<item>"will be run over"</item>
-    	<item>"will be assassinated"</item>
-    	<item>"will be mauled"</item>
-    	<item>"will bitten"</item>
-    	<item>"will be deep-fried"</item>
-    	<item>"will be drowned"</item>
-    	<item>"will be cut in half"</item>
-    	<item>"will be electrocuted"</item>
-    </string-array>
-    <string-array name="villains">
-    	<item>"a zombie"</item>
-    	<item>"a ninja"</item>
-    	<item>"a samurai"</item>
-    	<item>"a bear"</item>
-    	<item>"a shark"</item>
-    	<item>"an 80s rockstar"</item>
-    	<item>"Justin Bieber"</item>
-    	<item>"Napoleon Bonaparte"</item>
-    </string-array>
-    <string-array name="locations">
-    	<item>"out a window"</item>
-    	<item>"in the back"</item>
-    </string-array>
-    <string-array name="causes">
-    	<item>"of dysentery"</item>
-    	<item>"will spontaneously combust"</item>
-    </string-array>
-    <string-array name="effects">
-    	<item>"die of dysentery"</item>
-    	<item>"will spontaneously combust"</item>
-    </string-array>
-    <string-array name="evilObjects">
-    	<item>"a jet engine"</item>
-    	<item>"lightning"</item>
-    	<item>"an 18-wheeler"</item>
-    </string-array>
-    
-    
-    <!-- Deprecated -->
-    <string-array name="standalones"> <!-- 25 items -->
-	    <item>"It could cause the very fabric of reality to be destroyed!"</item>
-	    <item>"You will be mauled by a bear."</item>
-	    <item>"You will be bitten by a shark."</item>
-	    <item>"The earth will be destroyed."</item>
-	    <item>"Facebook will become self-aware."</item>
-	    <item>"You will be stabbed in the back."</item>
-	    <item>"You will be bitten by a snake on a plane."</item>
-	    <item>"You will be bitten by a zombie."</item>
-	    <item>"You will spend the rest of your life shoveling snow."</item>
-	    <item>"You will die of dysentery.</item>
-	    <item>"Chuck Norris will roundhouse kick you."</item>
-	    <item>"You will be run over by an 18-wheeler."</item>
-	    <item>"You will be thrown out a window."</item>
-	    <item>"You will spontaneously combust."</item>
-	    <item>"You will be abducted by aliens."</item>
-	    <item>"It will extinguish the sun."</item>
-	    <item>"Your head will fall off."</item>
-	    <item>"A rattlesnake will bite you."</item>
-	    <item>"You will be struck by lightning."</item>
-	    <item>"The building will collapse."</item>
-	    <item>"You will be assassinated by a ninja."</item>
-	    <item>"A pirate will steal all your booty."</item>
-	    <item>"It will cause the next ice age."</item>
-	    <item>"It will cause the nuclear holocaust"</item>
-	    <item>"It will be the start of World War III."</item>
-    </string-array>
+	<string name="app_name">What Could Go Wrong?</string>
+	<!-- 11 items -->
+	<string-array name="victims">
+		<item>"you"</item>
+		<item>"one of your friends"</item>
+		<item>"somebody you know"</item>
+		<item>"your boss"</item>
+		<item>"your mother"</item>
+		<item>"your father"</item>
+		<item>"your grandmother"</item>
+		<item>"that guy you never talk to"</item>
+		<item>"someone close to you"</item>
+		<item>"your best friend"</item>
+		<item>"your teacher"</item>
+	</string-array>
+	<!-- 23 items -->
+	<string-array name="verbs">
+		<item>"be struck"</item>
+		<item>"be thrown out a window"</item>
+		<item>"be killed"</item>
+		<item>"be stabbed"</item>
+		<item>"be bitten"</item>
+		<item>"be run over"</item>
+		<item>"be assassinated"</item>
+		<item>"be mauled"</item>
+		<item>"be bitten"</item>
+		<item>"be deep-fried"</item>
+		<item>"be drowned"</item>
+		<item>"be cut in half"</item>
+		<item>"be electrocuted"</item>
+		<item>"be drop-kicked"</item>
+		<item>"be suffocated"</item>
+		<item>"be smacked"</item>
+		<item>"be punched in the face"</item>
+		<item>"be hunted"</item>
+		<item>"be poisoned"</item>
+		<item>"be set on fire"</item>
+		<item>"be arrested"</item>
+		<item>"be poked"</item>
+		<item>"be clubbed"</item>
+	</string-array>
+	<!-- 18 items -->
+	<string-array name="villains">
+		<item>"a zombie"</item>
+		<item>"a ninja"</item>
+		<item>"a samurai"</item>
+		<item>"a bear"</item>
+		<item>"a shark"</item>
+		<item>"an 80s rockstar"</item>
+		<item>"Justin Bieber"</item>
+		<item>"Napoleon Bonaparte"</item>
+		<item>"a tarantula"</item>
+		<item>"a pirate"</item>
+		<item>"a ghost"</item>
+		<item>"a mad scientist"</item>
+		<item>"a man in a top hat"</item>
+		<item>"a dragon"</item>
+		<item>"your archnemesis"</item>
+		<item>"a corrupt colleague"</item>
+		<item>"the person you least suspect"</item>
+		<item>"a seal"</item>
+	</string-array>
+	<string-array name="locations">
+		<item>"out a window"</item>
+		<item>"in the back"</item>
+	</string-array>
+	<string-array name="causes">
+		<item>"of dysentery"</item>
+		<!-- <item>"will spontaneously combust"</item> -->
+	</string-array>
+	<string-array name="effects">
+		<item>"will die"</item>
+		<!-- <item>"will spontaneously combust"</item> -->
+	</string-array>
+	<string-array name="evilObjects">
+		<item>"a jet engine"</item>
+		<item>"lightning"</item>
+		<item>"an 18-wheeler"</item>
+	</string-array>
+	<string-array name="certainties">
+		<item>"will"</item>
+		<item>"might"</item>
+		<item>"could"</item>
+	</string-array>
+
+
+	<!-- Deprecated -->
+	<string-array name="standalones"> <!-- 25 items -->
+		<item>"It could cause the very fabric of reality to be destroyed!"
+		</item>
+		<item>"You will be mauled by a bear."</item>
+		<item>"You will be bitten by a shark."</item>
+		<item>"The earth will be destroyed."</item>
+		<item>"Facebook will become self-aware."</item>
+		<item>"You will be stabbed in the back."</item>
+		<item>"You will be bitten by a snake on a plane."</item>
+		<item>"You will be bitten by a zombie."</item>
+		<item>"You will spend the rest of your life shoveling snow."</item>
+		<item>"You will die of dysentery.</item>
+		<item>"Chuck Norris will roundhouse kick you."</item>
+		<item>"You will be run over by an 18-wheeler."</item>
+		<item>"You will be thrown out a window."</item>
+		<item>"You will spontaneously combust."</item>
+		<item>"You will be abducted by aliens."</item>
+		<item>"It will extinguish the sun."</item>
+		<item>"Your head will fall off."</item>
+		<item>"A rattlesnake will bite you."</item>
+		<item>"You will be struck by lightning."</item>
+		<item>"The building will collapse."</item>
+		<item>"You will be assassinated by a ninja."</item>
+		<item>"A pirate will steal all your booty."</item>
+		<item>"It will cause the next ice age."</item>
+		<item>"It will cause the nuclear holocaust"</item>
+		<item>"It will be the start of World War III."</item>
+	</string-array>
 </resources>

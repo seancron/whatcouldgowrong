@@ -25,11 +25,12 @@ public class ScenarioGenerator {
 	terms.put("effects", res.getStringArray(R.array.effects));
 	terms.put("locations", res.getStringArray(R.array.locations));
 	terms.put("standalones", res.getStringArray(R.array.standalones));
-	
+	terms.put("certainties", res.getStringArray(R.array.certainties));
+
 	for (Enumeration<String> keys = terms.keys(); keys.hasMoreElements();) {
 	    String temp = keys.nextElement();
 	    termPosition.put(temp, 0);
-	    
+
 	    // Generate random order
 	    int[] tempOrder = new int[terms.get(temp).length];
 	    for (int i = 0; i < tempOrder.length; i++) {
@@ -41,17 +42,22 @@ public class ScenarioGenerator {
     }
 
     String generateScenario() {
-	int syntax = randomNumber.nextInt(2);
+	int syntax = randomNumber.nextInt(1);
 
 	if (syntax == 0) {
-	    return capitalize(randomTerm("victims")) + " "
-		    + randomTerm("verbs") + " by " + randomTerm("villains");
-	}  else if (syntax == 1) {
-	    return capitalize(randomTerm("victims")) + " "
-		    + randomTerm("effects");
-	} /*else if (syntax == 2) {
-	    return randomTerm("standalones");
-	}*/
+	    return String.format("%s %s %s by %s",
+		    capitalize(randomTerm("victims")),
+		    randomTerm("certainties"), randomTerm("verbs"),
+		    randomTerm("villains"));
+	} /*else if (syntax == 1) {
+	    return String.format(format, args)
+	}
+	
+	
+	   * else if (syntax == 1) { return capitalize(randomTerm("victims")) +
+	   * " " + randomTerm("effects") + " " + randomTerm("causes"); } else
+	   * if(syntax == 2) { return randomTerm("standalones"); }
+	   */
 
 	;
 	return "Nothing.";
@@ -62,10 +68,10 @@ public class ScenarioGenerator {
 	int position = termPosition.get(key);
 	int[] order = termOrder.get(key);
 	String temp = values[order[position]];
-	
+
 	position++;
 	termPosition.put(key, position);
-	
+
 	// If all the values have been used, re-shuffle the order.
 	if (position >= order.length) {
 	    shuffle(order);
