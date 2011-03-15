@@ -49,13 +49,24 @@
 	    android:textStyle="bold"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
+	    android:layout_weight=".2"
 	    android:gravity="center"
-	    android:layout_weight=".3"
 	    android:paddingLeft="10dip"
 	    android:paddingRight="10dip"
 	    android:shadowColor="#000"
 	    android:shadowRadius="1.5"
 	    android:shadowDx="1"
 	    android:shadowDy="1"
+	/>
+	<TextView
+		android:id="@+id/SuggestionsHint"
+		android:gravity="center"
+		android:text="Press Menu to suggest a scenario."
+		android:textColor="#ccc"
+		android:background="#003399"
+		android:textSize="14sp"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="5px"
 	/>
 </LinearLayout>
